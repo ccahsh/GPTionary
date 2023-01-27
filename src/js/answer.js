@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const fetch = require('node-fetch');
 const { Configuration, OpenAIApi } = require("openai");
+const fs = require('fs');
 
 const app = express();
 
@@ -156,6 +157,7 @@ app.post('/', async function (req, res) {
 
 		question_full = preprocess(req.body.question);
 		question_now = preprocess(req.body.search);
+		userkey = req.body.password;
 
 		// set time limit
 		async function getResponseWithTimeout(timeLimit) {
@@ -176,8 +178,50 @@ app.post('/', async function (req, res) {
 		// wait for 10 seconds
 		const output = await getResponseWithTimeout(15000);
 		res.json(output);
+
 		// for admin purpose; will add firebase later
+		console.log(userkey);
 		console.log(question_now);
+		console.log(output);
+
+		// update/create txt file for entry history
+		let filePath = './../txt/history.txt';
+		// Create a write stream
+		let stream = fs.createWriteStream(filePath, { flags: 'a' });
+		// Check if the file exists
+		try {
+			fs.access(filePath, fs.constants.F_OK, (err) => {
+				if (err) {
+					// File does not exist, create it
+					stream.write(userkey + "\n\n", (err) => {
+						if (err) throw err;
+						stream.write(question_now + "\n\n", (err) => {
+							if (err) throw err;
+							stream.write(output + "\n\n\n", (err) => {
+								if (err) throw err;
+								// console.log('File created and values written');
+								stream.end();
+							});
+						});
+					});
+				} else {
+					// File exists, open it and write the values
+					stream.write(userkey + "\n\n", (err) => {
+						if (err) throw err;
+						stream.write(question_now + "\n\n", (err) => {
+							if (err) throw err;
+							stream.write(output + "\n\n\n", (err) => {
+								if (err) throw err;
+								// console.log('Values written to file');
+								stream.end();
+							});
+						});
+					});
+				}
+			});
+		} catch (error) {
+			// console.log("Error in appending to entry history.");
+		}
 	} catch (error) {
 		res.json("An error has occured while processing your question. Try a different question or reload the website.")
 	}

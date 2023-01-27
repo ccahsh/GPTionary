@@ -45,6 +45,8 @@ document.getElementById("search-form").addEventListener("submit", function (even
 				// 	searchTerm += "?";
 				// } 
 				if (searchTerm) { // If search term is not empty
+					// get userkey for admin supervision
+					var userkey = document.getElementById("passcode").innerHTML;
 					// Create a single list item for both question and answer
 					var listItem = document.createElement("li");
 					listItem.classList.add("list-group-item");
@@ -58,7 +60,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 					fetch("http://localhost:5000", {
 						headers: { "Content-Type": 'application/json' },
 						method: "POST",
-						body: JSON.stringify({ question: text + searchTerm, search: searchTerm }),
+						body: JSON.stringify({ question: text + searchTerm, search: searchTerm, password: userkey }),
 					})
 						.then((response) => response.text())
 						.then((data) => {
