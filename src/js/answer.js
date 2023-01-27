@@ -176,7 +176,8 @@ app.post('/', async function (req, res) {
 		// wait for 10 seconds
 		const output = await getResponseWithTimeout(15000);
 		res.json(output);
-		// console.log(output);
+		// for admin purpose; will add firebase later
+		console.log(question_now);
 	} catch (error) {
 		res.json("An error has occured while processing your question. Try a different question or reload the website.")
 	}
