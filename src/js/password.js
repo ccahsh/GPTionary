@@ -12,13 +12,12 @@ app.post('/', async function (req, res) {
 
 	let user_input = req.body.key;
 	let list = [
-		'example1',
-		'example2',
-		'example3',
-		'example4',
-		'example5',
-		'wonderfulnight',
-		'onetwothreefourfivesixseven'
+		'MotherhoodPatientActressSour5',
+		'DropMainInventionNature3',
+		'MinisterShapeWorseGate3',
+		'FlavorSpinSuspectLaugh5',
+		'HostHarvestAdmitWonder2',
+		'WitnessTogetherCriminalUgly1'
 	];
 	if (list.includes(user_input)) {
 		res.json('true');
