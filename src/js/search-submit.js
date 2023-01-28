@@ -1,3 +1,6 @@
+import {qnaInput} from "./firebase.js";
+
+//firebase.initializeFirebase();
 var text = "";
 
 document.getElementById("search-form").addEventListener("submit", function (event) {
@@ -73,6 +76,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 							// update the innerHTML of the list item to include the answer
 							listItem.innerHTML = listItem.innerHTML.replace('<span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span>', data);
 							text = text + "Q: " + searchTerm + " A: " + data + " ";
+							await qnaInput(userkey, searchTerm, data);
 							submitButton.removeAttribute("disabled");
 						})
 						.catch(error => console.error(error));
