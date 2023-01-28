@@ -66,7 +66,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 						body: JSON.stringify({ question: text + searchTerm, search: searchTerm, password: userkey }),
 					})
 						.then((response) => response.text())
-						.then((data) => {
+						.then(async (data) => {
 							// console.log(data);
 							data = data.replace(/^"(.*)"$/, '$1');
 							data = data.replace(/\\n/g, '<br>');
