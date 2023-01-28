@@ -28,7 +28,7 @@ function checkkey() {
 
 	var userkey = document.getElementById("userkey").value;
 	// console.log(userkey);
-	fetch("http://localhost:6060", {
+	fetch("http://45.55.65.124:6060", {
 		headers: { "Content-Type": 'application/json' },
 		method: "POST",
 		body: JSON.stringify({ key: userkey }),

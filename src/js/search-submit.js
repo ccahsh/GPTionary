@@ -27,7 +27,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 	var check = 'false';
 
 	// double confirm the password (not necessary)
-	fetch("http://localhost:6060", {
+	fetch("http://45.55.65.124:6060", {
 		headers: { "Content-Type": 'application/json' },
 		method: "POST",
 		body: JSON.stringify({ key: password }),
@@ -60,7 +60,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 					submitButton.setAttribute("disabled", "true");
 					listItem.innerHTML += "<br><b>A: </b><span class='loader__dot'>.</span><span class='loader__dot'>.</span><span class='loader__dot'>.</span>";
 
-					fetch("http://localhost:5000", {
+					fetch("http://45.55.65.124:5000", {
 						headers: { "Content-Type": 'application/json' },
 						method: "POST",
 						body: JSON.stringify({ question: text + searchTerm, search: searchTerm, password: userkey }),
