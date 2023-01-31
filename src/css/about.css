@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap'); */
+
+body {
+  font-family: 'Muli', Tahoma;
+}
+
+.black-section {
+  background-color: black;
+  color: white;
+  scroll-snap-align: start;
+  height: 100vh;
+}
+
+.white-section {
+  background-color: white;
+  color: black;
+  scroll-snap-align: start;
+  height: 50vh;
+}
+
+.grey-section {
+  background-color: #ffffff;
+  color: black;
+  scroll-snap-align: start;
+  height: 50vh;
+}
+
+/* Add some styles to the copyright section to keep it at the bottom of the page */
+.copyright-section {
+  padding-bottom: 1%;
+  width: 100%;
+}
+
+.slide-in {
+  animation: slide-in 1s ease-in-out forwards;
+  transform: translateX(-100%);
+}
+
+.snap-container {
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+  /* set the container to take up the full height of the parent element */
+}
+
+/* .image-container {
+  background-image: url(./../images/book.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: right;
+} */
+
+#left {
+  float: left;
+  border-radius: 10%;
+  margin-top: 0%;
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 35%;
+}
+
+#right {
+  float: right;
+  /* border-radius: 10%; */
+  margin-top: 4%;
+  /* margin-right: 5%; */
+  width: 35%;
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-25%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+
+.pop-in {
+  animation: pop-in 0.8s ease-in-out;
+  animation-fill-mode: forwards;
+  transform: scale(0);
+}
+
+@keyframes pop-in {
+  0% {
+    transform: scale(0.7);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

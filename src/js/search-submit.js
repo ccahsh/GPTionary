@@ -1,11 +1,9 @@
 import {qnaInput} from "./firebase.js";
 
-//firebase.initializeFirebase();
 var text = "";
 
 document.getElementById("search-form").addEventListener("submit", function (event) {
 	event.preventDefault(); // Prevent form from submitting
-
 	function getCookie(cname) {
 		var name = cname + "=";
 		var decodedCookie = decodeURIComponent(document.cookie);
@@ -27,7 +25,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 	var check = 'false';
 
 	// double confirm the password (not necessary)
-	fetch("http://45.55.65.124:6060", {
+	fetch("http://localhost:5500", {
 		headers: { "Content-Type": 'application/json' },
 		method: "POST",
 		body: JSON.stringify({ key: password }),
@@ -60,7 +58,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 					submitButton.setAttribute("disabled", "true");
 					listItem.innerHTML += "<br><b>A: </b><span class='loader__dot'>.</span><span class='loader__dot'>.</span><span class='loader__dot'>.</span>";
 
-					fetch("http://45.55.65.124:5000", {
+					fetch("http://localhost:5000", {
 						headers: { "Content-Type": 'application/json' },
 						method: "POST",
 						body: JSON.stringify({ question: text + searchTerm, search: searchTerm, password: userkey }),
@@ -68,15 +66,17 @@ document.getElementById("search-form").addEventListener("submit", function (even
 						.then((response) => response.text())
 						.then(async (data) => {
 							// console.log(data);
+							const firebaseConfig = JSON.parse(data)[1];
+							data = JSON.parse(data)[0];
 							data = data.replace(/^"(.*)"$/, '$1');
-							data = data.replace(/\\n/g, '<br>');
+							data = data.replace(/\n/g, '<br>');
 							data = data.replace(/\\"/g, '"');
 							// console.log(data);
 							// data = data.replace(/\n/g, '<br>');
 							// update the innerHTML of the list item to include the answer
 							listItem.innerHTML = listItem.innerHTML.replace('<span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span>', data);
-							text = text + "Q: " + searchTerm + " A: " + data + " ";
-							await qnaInput(userkey, searchTerm, data);
+							text = text + "Q: " + searchTerm + " A: " + JSON.stringify(data) + " ";
+							await qnaInput(userkey, searchTerm, data, firebaseConfig);
 							submitButton.removeAttribute("disabled");
 						})
 						.catch(error => console.error(error));

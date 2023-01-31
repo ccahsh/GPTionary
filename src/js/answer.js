@@ -1,9 +1,21 @@
+require("dotenv").config({ path: __dirname + '/./../env/.env' });
+
 const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const fetch = require('node-fetch');
 const { Configuration, OpenAIApi } = require("openai");
-const fs = require('fs');
+
+const firebaseConfig = {
+	apiKey: process.env.APIKEY,
+	authDomain: process.env.AUTHDOMAIN,
+	databaseURL: process.env.DATABASEURL,
+	projectId: process.env.PROJECTID,
+	storageBucket: process.env.STORAGEBUCKET,
+	messagingSenderId: process.env.MESSAGINGSENDERID,
+	appId: process.env.APPID,
+	measurementId: process.env.MEASUREMENTID
+};
 
 const app = express();
 
@@ -14,8 +26,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.post('/', async function (req, res) {
 
 	try {
-		// will make the filler switched to structured list of questions answered by chatgpt (probably)
-		var filler = "You will be finding words or phrases that best represent the user's question. Questions will be given after 'Q:'. Give your answer directly; do not start your answer with 'A:'. You will also provide definition(s) of the answer, some trivia, and three example sentences for the answer you gave. If the user gives a follow-up question, answer it, too, as long as it is appropriate for dictionary use. If the answer is not a word or phrase, explain that the question is not appropriate for dictionary use. If the question needs more detail to answer, explain that the question needs more information to answer. If the question is repeated before, explain that the question is redundant. Q: "
+		// console.log(firebaseConfig);
+		// add an example Q&A that GPT will answer (so that formatting is consistent). Make sure it is answering what is gptionary. 
+		
+		const instruction = "You will be finding words or phrases that best represent the user's question. Questions will be given after 'Q:'. Give your answer directly; do not start your answer with 'A:'. You will also provide definition(s) of the answer, some trivia, and three example sentences for the answer you gave. If the user gives a follow-up question, answer it, too, as long as it is appropriate for dictionary use. If the answer is not a word or phrase, explain that the question is not appropriate for dictionary use. If the question needs more detail to answer, explain that the question needs more information to answer. If the question is repeated before, explain that the question is redundant. ";
+		const demonstration = "Q: What is the word that refers to a tool that helps users find the word or phrase based on the description given? A: Reverse dictionary. \nDefinition: It is a dictionary that finds words based on definitions, which is the opposite of what you would expect from a typical dictionary. \nTrivia: GPTionary is a reverse dictionary, but with artificial intelligence, it provides a far better service than its rivals. \nExample Sentences: \n1. The reverse dictionary is a useful tool for finding synonyms and related words. \n2. A reverse dictionary can help you find the right word when you can't think of it yourself. \n3. You can use a reverse dictionary to quickly find the definition of a word you don't know. ";
+		const start = "Q: ";
+
+		const template = instruction + demonstration + start;
 
 		const prequery = async (data) => {
 
@@ -23,7 +41,7 @@ app.post('/', async function (req, res) {
 			const response = await fetch(
 				"https://api-inference.huggingface.co/models/unitary/toxic-bert",
 				{
-					headers: { Authorization: "Bearer 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" },
+					headers: { Authorization: "Bearer " + process.env.TOXICBERTKEY },
 					method: "POST",
 					body: JSON.stringify(data.now),
 				}
@@ -49,7 +67,7 @@ app.post('/', async function (req, res) {
 				}
 			}
 
-			input = filler + question_full + " A: ";
+			input = template + question_full + " A: ";
 			// console.log(input);
 
 			var output = "";
@@ -66,21 +84,6 @@ app.post('/', async function (req, res) {
 				});
 				const openai = new OpenAIApi(configuration);
 				// source of error may be: exceeded quota, credit card should be renewed, or just a bug
-				// const openai_preoutput = await openai.createCompletion({
-				// 	model: "text-davinci-003",
-				// 	prompt: preinput,
-				// 	temperature: 0.5,
-				// 	max_tokens: 500,
-				// 	top_p: 0.5,
-				// 	frequency_penalty: 0.5,
-				// 	presence_penalty: 0.2,
-				// });
-				// var preoutput = openai_preoutput.data.choices[0].text;
-				// preoutput = preoutput.trim();
-				// preoutput = preoutput.toLowerCase();
-
-				// console.log(preinput);
-				// console.log(preoutput);
 
 				var preoutput = 'yes';
 				// preprompt conditioning is better
@@ -107,7 +110,7 @@ app.post('/', async function (req, res) {
 						const BLOOM_response = await fetch(
 							"https://api-inference.huggingface.co/models/bigscience/bloom",
 							{
-								headers: { Authorization: "Bearer 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" },
+								headers: { Authorization: "Bearer " + process.env.BLOOMKEY },
 								method: "POST",
 								body: JSON.stringify(BLOOM_input),
 							}
@@ -119,19 +122,6 @@ app.post('/', async function (req, res) {
 						BLOOM_output = BLOOM_answer.substring(0, BLOOM_answer.indexOf("Q:")).trim();
 						output = BLOOM_output;
 					}
-					// chatgpt API blocked by recaptcha: https://github.com/transitive-bullshit/chatgpt-api 
-					// const { ChatGPTAPIBrowser } = await import('chatgpt');
-
-					// const api = new ChatGPTAPIBrowser({
-					// 	email: 'trooperwalker11@gmail.com',
-					// 	password: 'r3vd1ct!'
-					// })
-
-					// await api.initSession()
-
-					// const result = await api.sendMessage(data)
-					// output = result.response
-
 				} else {
 					output = "Please rephrase the question correctly and try again."
 				}
@@ -177,51 +167,13 @@ app.post('/', async function (req, res) {
 
 		// wait for 10 seconds
 		const output = await getResponseWithTimeout(15000);
-		res.json(output);
+		res.json([output, firebaseConfig]);
 
 		// for admin purpose; will add firebase later
-		console.log(userkey);
-		console.log(question_now);
-		console.log(output);
+		// console.log(userkey);
+		// console.log(question_now);
+		// console.log(output);
 
-		// update/create txt file for entry history
-		let filePath = './../txt/history.txt';
-		// Create a write stream
-		let stream = fs.createWriteStream(filePath, { flags: 'a' });
-		// Check if the file exists
-		try {
-			fs.access(filePath, fs.constants.F_OK, (err) => {
-				if (err) {
-					// File does not exist, create it
-					stream.write(userkey + "\n\n", (err) => {
-						if (err) throw err;
-						stream.write(question_now + "\n\n", (err) => {
-							if (err) throw err;
-							stream.write(output + "\n\n\n", (err) => {
-								if (err) throw err;
-								// console.log('File created and values written');
-								stream.end();
-							});
-						});
-					});
-				} else {
-					// File exists, open it and write the values
-					stream.write(userkey + "\n\n", (err) => {
-						if (err) throw err;
-						stream.write(question_now + "\n\n", (err) => {
-							if (err) throw err;
-							stream.write(output + "\n\n\n", (err) => {
-								if (err) throw err;
-								// console.log('Values written to file');
-								stream.end();
-							});
-						});
-					});
-				}
-			});
-		} catch (error) {
-			// console.log("Error in appending to entry history.");
-		}
 	} catch (error) {
 		res.json("An error has occured while processing your question. Try a different question or reload the website.")
 	}
