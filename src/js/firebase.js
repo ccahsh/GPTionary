@@ -11,17 +11,6 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebas
 import { getDatabase, ref, update } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 // import { getAuth, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 
-// const firebaseConfig = {
-// 	apiKey: "AIzaSyCw5FE_svyLH7_bGiansYPn2bikyisq3Xg",
-// 	authDomain: "rev-dict-22.firebaseapp.com",
-// 	databaseURL: "https://rev-dict-22-default-rtdb.firebaseio.com",
-// 	projectId: "rev-dict-22",
-// 	storageBucket: "rev-dict-22.appspot.com",
-// 	messagingSenderId: "546641117639",
-// 	appId: "1:546641117639:web:20ea3eea4605bdc440d9e2",
-// 	measurementId: "G-QKMVPXQLP3"
-// };
-
 // console.log(template);
 
 // const template = {
