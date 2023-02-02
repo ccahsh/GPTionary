@@ -3,7 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
 	document.querySelector('.slide-in').classList.add('slide-in');
 });
 function openIndex() {
-	window.open("https://www.gptionary.com", "_blank");
+	const currentUrl = window.location.href;
+	const substringUrl = currentUrl.substring(0, currentUrl.indexOf('/'));
+	window.open(substringUrl, '_blank');
+// 	window.open("https://www.gptionary.com", "_blank");
+// 	this is redacted until gptionary.com is globally accessible (slow DNS update)
 }
 
 $(document).ready(function () {
