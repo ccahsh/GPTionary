@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "redirects": [
+    {
+      "source": "/:splat",
+      "destination": "/:splat.html",
+      "statusCode": 200
+    }
+  ]
+}
