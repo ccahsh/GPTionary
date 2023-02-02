@@ -25,7 +25,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 	var check = 'false';
 
 	// double confirm the password (not necessary)
-	fetch("http://localhost:5500", {
+	fetch("https://gptionary-password.vercel.app/", {
 		headers: { "Content-Type": 'application/json' },
 		method: "POST",
 		body: JSON.stringify({ key: password }),
@@ -58,7 +58,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 					submitButton.setAttribute("disabled", "true");
 					listItem.innerHTML += "<br><b>A: </b><span class='loader__dot'>.</span><span class='loader__dot'>.</span><span class='loader__dot'>.</span>";
 
-					fetch("http://localhost:5000", {
+					fetch("https://gptionary-answer.vercel.app/", {
 						headers: { "Content-Type": 'application/json' },
 						method: "POST",
 						body: JSON.stringify({ question: text + searchTerm, search: searchTerm, password: userkey }),
