@@ -27,9 +27,6 @@ import { getDatabase, ref, update } from "https://www.gstatic.com/firebasejs/9.1
 // const fbapp = initializeApp(firebaseConfig);
 // const db = getDatabase();
 
-// const fbapp = initializeApp(firebaseConfig);
-// const db = getDatabase();
-
 export async function qnaInput(ukey, question, answer, firebaseConfig) {
 	const fbapp = initializeApp(firebaseConfig);
 	const db = getDatabase();
@@ -50,10 +47,3 @@ export async function qnaInput(ukey, question, answer, firebaseConfig) {
 	question = question.split(']').join('-');
 	update(pushRef, { [question]: answer });
 }
-
-
-// export async function qnaInput(ukey, question, answer) {
-// 	const date = new Date().toISOString();
-// 	const pushRef = await ref(db, ukey + "/" + date +"/");
-// 	update(pushRef, { [question]: answer });
-// }
