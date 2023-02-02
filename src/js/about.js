@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 function openIndex() {
 	const currentUrl = window.location.href;
+	console.log(currentUrl);
 	const substringUrl = currentUrl.substring(0, currentUrl.indexOf('/'));
 	window.open(substringUrl, '_blank');
 // 	window.open("https://www.gptionary.com", "_blank");
