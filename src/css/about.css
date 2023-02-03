@@ -70,7 +70,7 @@ body {
   background-color: #FFF8E1;
   color: black;
   scroll-snap-align: start;
-  min-height: 50vh;
+  min-height: 60vh;
   height: auto;
   padding: 30px;
 }
