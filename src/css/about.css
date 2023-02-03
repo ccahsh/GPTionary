@@ -79,7 +79,8 @@ body {
   background-color: #ffffff;
   color: black;
   scroll-snap-align: start;
-  height: 50vh;
+  min-height: 35vh;
+  height: auto;
   padding-top: 30px;
 }
 
