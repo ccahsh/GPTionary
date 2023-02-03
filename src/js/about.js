@@ -10,7 +10,7 @@ function openIndex() {
 function openWaitlist() {
 	window.open("http://eepurl.com/ijuN8b", '_blank');
 }
-function openIndex() {
+function openNewsletter() {
 	window.open("https://gptionary.substack.com/", '_blank');
 }
 
