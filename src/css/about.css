@@ -79,7 +79,7 @@ body {
   background-color: #ffffff;
   color: black;
   scroll-snap-align: start;
-  min-height: 35vh;
+  min-height: 40vh;
   height: auto;
   padding-top: 30px;
 }
