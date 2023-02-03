@@ -6,8 +6,12 @@ function openIndex() {
 	const currentUrl = window.location.href;
 	const substringUrl = currentUrl.substring(0, currentUrl.lastIndexOf('/'));
 	window.open(substringUrl, '_blank');
-// 	window.open("https://www.gptionary.com", "_blank");
-// 	this is redacted until gptionary.com is globally accessible (slow DNS update)
+}
+function openWaitlist() {
+	window.open("http://eepurl.com/ijuN8b", '_blank');
+}
+function openIndex() {
+	window.open("https://gptionary.substack.com/", '_blank');
 }
 
 $(document).ready(function () {
