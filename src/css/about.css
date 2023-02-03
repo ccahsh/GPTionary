@@ -45,8 +45,9 @@ body {
   #bookimg {
     float: none;
     display: block;
-    margin: 20px 2.5px 0;
+    margin: 20px auto 0;
     padding-bottom: 25px;
+    padding-right: 5px;
   }
 }
 
