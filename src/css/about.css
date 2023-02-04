@@ -3,6 +3,7 @@
 
 body {
   font-family: 'Muli', Tahoma;
+  background-color: Black;
 }
 
 @media (min-width: 768px) {
