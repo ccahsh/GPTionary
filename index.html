@@ -7,6 +7,7 @@
     <meta name="description" content="Built on top of GPT and open-sourced LLMs, GPTionary accelerates education-only use of AI."/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="src/images/favicon.ico?v=M44lzPylqQ">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -144,11 +145,11 @@
             
     <script>
         $(document).ready(function(){
-            var url = $("#cartoonVideo").attr('src');
-            $("#myModal").on('hide.bs.modal', function(){
+            var url = $("#video").attr('src');
+            $("#demoview").on('hide.bs.modal', function(){
                 $("#video").attr('src', '');
             });
-            $("#myModal").on('show.bs.modal', function(){
+            $("#demoview").on('show.bs.modal', function(){
                 $("#video").attr('src', url);
             });
         });
