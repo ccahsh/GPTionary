@@ -146,10 +146,10 @@
     <script>
         $(document).ready(function(){
             var url = $("#video").attr('src');
-            $("#demoview").on('hide.bs.modal', function(){
+            $("#demoview").on('hidden.bs.modal', function(){
                 $("#video").attr('src', '');
             });
-            $("#demoview").on('show.bs.modal', function(){
+            $("#demoview").on('shown.bs.modal', function(){
                 $("#video").attr('src', url);
             });
         });
