@@ -134,11 +134,25 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body">
-                    <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/eYzlw8c2zPk" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <div class="embed-responsive embed-responsive-16by9">
+                        <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/eYzlw8c2zPk" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
                 </div>
             </div>
         <div>
     </div>
+            
+    <script>
+        $(document).ready(function(){
+            var url = $("#cartoonVideo").attr('src');
+            $("#myModal").on('hide.bs.modal', function(){
+                $("#video").attr('src', '');
+            });
+            $("#myModal").on('show.bs.modal', function(){
+                $("#video").attr('src', url);
+            });
+        });
+    </script>
 
     <div class="modal fade" id="keyrequest" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
