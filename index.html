@@ -38,7 +38,13 @@
                     <li class="nav-item">
                         <a class="nav-link" onclick="openkeyrequest()" style="margin-top: 0px; cursor: pointer;">Get Key</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="opendemoview()" style="margin-top: 0px; cursor: pointer;">Demo</a>
+                    </li>
                     <script>
+                        function opendemoview() {
+                            $('#demoview').modal('show');
+                        }
                         function openkeyrequest() {
                             $('#keyrequest').modal('show');
                         }
@@ -46,9 +52,6 @@
                             $('#keynotwork').modal('show');
                         }
                     </script>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" target="_blank" style="margin-top: 0px;">Demo</a>
-                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="./about.html" target="_blank" style="margin-top: 0px;">About</a>
                     </li>
@@ -123,6 +126,19 @@
                     <button type="button" class="btn btn-primary" id="submitbutton" onclick="checkkey()">Submit</button>
                 </div>
                 <script src="src/js/key-submit.js"></script>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="demoview" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body" style="padding-bottom: 0%;">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/eYzlw8c2zPk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
             </div>
         </div>
     </div>
