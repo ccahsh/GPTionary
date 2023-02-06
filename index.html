@@ -139,17 +139,6 @@
             </div>
         <div>
     </div>
-    
-    <script>
-        $('#demoview').on('shown.bs.modal', function () {
-            $("#video")[0].src += "&autoplay=1";
-        });
-        $('#demoview').on('click', function (e) {
-            if (e.target.id === 'video') {
-                e.preventDefault();
-            }
-        });
-    </script>
 
     <div class="modal fade" id="keyrequest" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
