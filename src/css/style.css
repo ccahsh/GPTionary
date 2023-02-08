@@ -55,14 +55,6 @@ body {
   padding: 0;
 }
 
-#passcode1 {
-  display: none;
-}
-
-#passcode1.collapse {
-  display: inline-block;
-}
-
 .toggler-icon {
   display: block;
   position: absolute;
