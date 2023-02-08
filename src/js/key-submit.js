@@ -49,7 +49,7 @@ function checkkey() {
 					document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 				};
 				// an hour of access
-				setCookie("password", userkey, 60);
+				setCookie("password", userkey, 1);
 				document.getElementById("passcode").innerHTML = userkey;
 
 				// 'correct' variable is changed to allow Q&A
