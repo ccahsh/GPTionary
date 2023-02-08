@@ -65,6 +65,9 @@ function checkkey() {
 					$('#userkey').attr("placeholder", "Authentication successful.");
 					await delay(1500);
 					$('#keyquery').modal('hide');
+					document.getElementById("userkey").classList.remove("userkey");
+					document.getElementById("userkey").style.border = null;
+					document.getElementById("userkey").classList.add("preuserkey");
 					verifysubmitButton.removeAttribute("disabled");
 				};
 				timedelay();
