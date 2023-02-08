@@ -35,7 +35,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 			// console.log("data:" + data);
 			check = data.replace(/^"(.*)"$/, '$1');
 
-			if (correct == false && check == 'false') { // if the user's key query is wrong (or refreshed the page) AND cookie got expired
+			if (correct == false || check == 'false') { // if the user's key query is wrong (or refreshed the page) OR cookie got expired (to prevent indefinite usage)
 				$('#keyquery').modal('show');
 			} else {
 				var input = document.getElementById("search-input"); // Get search input
