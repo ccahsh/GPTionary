@@ -42,6 +42,9 @@
                     <li class="nav-item">
                         <a class="nav-link" onclick="opendemoview()" style="margin-top: 0px; cursor: pointer;">Demo</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" onclick="openstuck()" style="margin-top: 0px; cursor: pointer;">Stuck?</a>
+                    </li>
                     <script>
                         function opendemoview() {
                             $('#demoview').modal('show');
@@ -51,6 +54,9 @@
                         }
                         function openkeynotwork() {
                             $('#keynotwork').modal('show');
+                        }
+                        function openstuck() {
+                            $('#stuck').modal('show');
                         }
                     </script>
                     <li class="nav-item">
@@ -173,6 +179,19 @@
             <div class="modal-content">
                 <div class="modal-body" style="padding-bottom: 0%;">
                     <p>If your key isn't working, it could be due to it being misused (such as making repeated inappropriate requests) or possibly even leaked to the public. To avoid this kind of misuse, we only allow access to GPTionary for verified communities.<br><br>If you're having trouble with your key, reach out to your community leader to get a new one.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="stuck" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body" style="padding-bottom: 0%;">
+                    <p>To prevent misuse, we may pause responses. Please refresh the page and try again. Please note that your search history will not be saved after refreshing.</p>
                 </div>
                 <div class="modal-footer justify-content-center">
                     <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
