@@ -68,6 +68,7 @@ function checkkey() {
 					document.getElementById("userkey").classList.remove("userkey");
 					document.getElementById("userkey").style.border = null;
 					document.getElementById("userkey").classList.add("preuserkey");
+					$('#userkey').attr("placeholder", "Type in the key to access GPTionary");
 					verifysubmitButton.removeAttribute("disabled");
 				};
 				timedelay();
