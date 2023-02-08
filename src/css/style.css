@@ -60,7 +60,7 @@ body {
 }
 
 #passcode1.collapse {
-  display: flex;
+  display: inline-block;
 }
 
 .toggler-icon {
