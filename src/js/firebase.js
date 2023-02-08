@@ -7,7 +7,7 @@
 // var firebase = require("firebase/app");
 // require("firebase/database");
 // import template from "./firebasepwd.js";
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+import { initializeApp, getApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 import { getDatabase, ref, update } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 // import { getAuth, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 
@@ -28,7 +28,15 @@ import { getDatabase, ref, update } from "https://www.gstatic.com/firebasejs/9.1
 // const db = getDatabase();
 
 export async function qnaInput(ukey, question, answer, firebaseConfig) {
-	const fbapp = initializeApp(firebaseConfig);
+	const createFirebaseApp = (config = {}) => {
+  		try {
+    			return getApp();
+  		} catch () {
+    			return initializeApp(config);
+  		}
+	};
+	const fbapp = createFirebaseApp(firebaseConfig);
+	// const fbapp = initializeApp(firebaseConfig);
 	const db = getDatabase();
 	const date = new Date().toISOString();
 	function getSubstringUntilDot(str) {
