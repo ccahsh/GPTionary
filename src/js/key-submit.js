@@ -63,13 +63,13 @@ function checkkey() {
 					document.getElementById("userkey").classList.add("userkey");
 					document.getElementById("userkey").value = "";
 					$('#userkey').attr("placeholder", "Authentication successful.");
-					await delay(1500);
+					await delay(1000);
 					$('#keyquery').modal('hide');
+					verifysubmitButton.removeAttribute("disabled");
 					document.getElementById("userkey").classList.remove("userkey");
 					document.getElementById("userkey").style.border = null;
 					document.getElementById("userkey").classList.add("preuserkey");
 					$('#userkey').attr("placeholder", "Type in the key to access GPTionary");
-					verifysubmitButton.removeAttribute("disabled");
 				};
 				timedelay();
 			} else {
