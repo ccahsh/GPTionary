@@ -18,4 +18,5 @@ $(document).ready(function () {
 
 	var password = getCookie("password");
 	document.getElementById("passcode").innerHTML = password;
+	document.getElementById("passcode1").innerHTML = password;
 });
