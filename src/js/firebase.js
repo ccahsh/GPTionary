@@ -31,7 +31,7 @@ export async function qnaInput(ukey, question, answer, firebaseConfig) {
 	const createFirebaseApp = (firebaseConfig = {}) => {
   		try {
     			return getApp();
-  		} catch () {
+  		} catch (error) {
     			return initializeApp(firebaseConfig);
   		}
 	};
