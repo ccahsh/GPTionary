@@ -59,7 +59,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 					var listItemA = document.createElement("li");
 					listItemA.classList.add("list-group-item");
 					document.getElementById("search-history").append(listItemA);
-					listItemA.innerHTML += "<br><b>A: </b><span class='loader__dot'>.</span><span class='loader__dot'>.</span><span class='loader__dot'>.</span>";
+					listItemA.innerHTML += "<b>A: </b><span class='loader__dot'>.</span><span class='loader__dot'>.</span><span class='loader__dot'>.</span>";
 
 					fetch("https://gptionary-answer.vercel.app/", {
 						headers: { "Content-Type": 'application/json' },
