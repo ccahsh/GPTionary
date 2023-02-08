@@ -58,6 +58,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 					submitButton.setAttribute("disabled", "true");
 					var listItemA = document.createElement("li");
 					listItemA.classList.add("list-group-item");
+					document.getElementById("search-history").append(listItemA);
 					listItemA.innerHTML += "<br><b>A: </b><span class='loader__dot'>.</span><span class='loader__dot'>.</span><span class='loader__dot'>.</span>";
 
 					fetch("https://gptionary-answer.vercel.app/", {
