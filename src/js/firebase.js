@@ -37,7 +37,7 @@ export async function qnaInput(ukey, question, answer, firebaseConfig) {
 	};
 	const fbapp = createFirebaseApp(firebaseConfig);
 	// const fbapp = initializeApp(firebaseConfig);
-	const db = getDatabase();
+	const db = getDatabase(fbapp);
 	const date = new Date().toISOString();
 	function getSubstringUntilDot(str) {
 		var dotIndex = str.indexOf(".");
