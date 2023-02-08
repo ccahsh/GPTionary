@@ -28,11 +28,11 @@ import { getDatabase, ref, update } from "https://www.gstatic.com/firebasejs/9.1
 // const db = getDatabase();
 
 export async function qnaInput(ukey, question, answer, firebaseConfig) {
-	const createFirebaseApp = (config = {}) => {
+	const createFirebaseApp = (firebaseConfig = {}) => {
   		try {
     			return getApp();
   		} catch () {
-    			return initializeApp(config);
+    			return initializeApp(firebaseConfig);
   		}
 	};
 	const fbapp = createFirebaseApp(firebaseConfig);
