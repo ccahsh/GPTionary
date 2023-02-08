@@ -51,6 +51,7 @@ function checkkey() {
 				// an hour of access
 				setCookie("password", userkey, 1);
 				document.getElementById("passcode").innerHTML = userkey;
+				document.getElementById("passcode1").innerHTML = userkey;
 
 				// 'correct' variable is changed to allow Q&A
 				correct = true;
