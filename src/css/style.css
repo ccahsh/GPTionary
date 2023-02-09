@@ -129,7 +129,7 @@ body {
   width: 75%;
   box-shadow: 0 0 5px rgb(129, 129, 129);
   border-width: 0px;
-  margin: 10px;
+  margin: auto;
 }
 
 .list-group-item:last-child {
@@ -144,12 +144,11 @@ body {
 }
 
 .list-group-item {
-  position: absolute;
+  position: relative;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 75%;
+  transform: translateX(12.5%);
   border-radius: 5px;
+  width: 75%;
   box-shadow: 0 0 5px rgb(129, 129, 129);
   border-width: 0px;
   margin: 10px;
