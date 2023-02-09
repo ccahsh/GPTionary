@@ -255,6 +255,11 @@ li {
   transform: matrix(0.95, 0, 0, 0.95, 0, 0);
 }
 
+.modal-body {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
 @keyframes blink {50% { color: transparent }}
 .loader__dot { animation: 2s blink infinite }
 .loader__dot:nth-child(2) { animation-delay: 500ms }
