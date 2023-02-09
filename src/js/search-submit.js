@@ -88,7 +88,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 								     'An error has occured while processing your question. Try a different question or reload the page.'];
 						let test_data = data.trim()
 						if (error_char.includes(test_data)) {
-							data = "Sorry, there was an error processing your request. Could you please ask your question again?";
+							data = "Sorry, there was an error processing your request. Please rephrase your question or refresh the page.";
 						} else {
 							// remove 'A:' in beginning
 							if (data.startsWith('A:')) {
@@ -107,7 +107,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 					})
 					.catch(error => {
 						console.error(error);
-						data = "Sorry, there was an error processing your request. Could you please ask your question again?";
+						data = "Sorry, there was an error processing your request. Please rephrase your question or refresh the page.";
 						listItemA.innerHTML = listItemA.innerHTML.replace('<span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span>', data);
 						// cannot save in firebase since config data is not given
 						// await qnaInput(userkey, searchTerm, data, firebaseConfig);
