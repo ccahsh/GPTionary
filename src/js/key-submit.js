@@ -51,7 +51,7 @@ function checkkey() {
 				};
 
 				// an hour of access
-				setCookie("password", userkey, 1);
+				setCookie("password", userkey, 60);
 				document.getElementById("passcode").innerHTML = userkey;
 				document.getElementById("passcode1").innerHTML = userkey;
 
