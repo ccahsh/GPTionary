@@ -35,23 +35,27 @@ export async function qnaInput(ukey, question, answer, firebaseConfig) {
     			return initializeApp(firebaseConfig);
   		}
 	};
-	const fbapp = createFirebaseApp(firebaseConfig);
-	// const fbapp = initializeApp(firebaseConfig);
-	const db = getDatabase(fbapp);
-	const date = new Date().toISOString();
-	function getSubstringUntilDot(str) {
-		var dotIndex = str.indexOf(".");
-		return str.substring(0, dotIndex);
+	try {
+		const fbapp = createFirebaseApp(firebaseConfig);
+		// const fbapp = initializeApp(firebaseConfig);
+		const db = getDatabase(fbapp);
+		const date = new Date().toISOString();
+		function getSubstringUntilDot(str) {
+			var dotIndex = str.indexOf(".");
+			return str.substring(0, dotIndex);
+		}
+		let fbdate = getSubstringUntilDot(date);
+		// console.log(fbdate);
+		const pushRef = await ref(db, ukey + "/" + fbdate);
+		// for 'question' to be updated in Firebase: Keys must be non-empty strings and can't contain ".", "#", "$", "/", "[", or "]"
+		question = question.split('.').join('-');
+		question = question.split('#').join('-');
+		question = question.split('$').join('-');
+		question = question.split('/').join('-');
+		question = question.split('[').join('-');
+		question = question.split(']').join('-');
+		update(pushRef, { [question]: answer });
+	} catch (error) {
+		console.log(error);
 	}
-	let fbdate = getSubstringUntilDot(date);
-	// console.log(fbdate);
-	const pushRef = await ref(db, ukey + "/" + fbdate);
-	// for 'question' to be updated in Firebase: Keys must be non-empty strings and can't contain ".", "#", "$", "/", "[", or "]"
-	question = question.split('.').join('-');
-	question = question.split('#').join('-');
-	question = question.split('$').join('-');
-	question = question.split('/').join('-');
-	question = question.split('[').join('-');
-	question = question.split(']').join('-');
-	update(pushRef, { [question]: answer });
 }
