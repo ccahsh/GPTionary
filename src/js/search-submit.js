@@ -20,15 +20,6 @@ document.getElementById("search-form").addEventListener("submit", function (even
 		}
 		return "";
 	};
-	
-	const AbortController = window.AbortController;
-	const controller = new AbortController();
-	const signal = controller.signal;
-
-	setTimeout(() => {
-		controller.abort();
-		alert("Please refresh and try again.");
-	}, 10000);
 
 	var password = getCookie("password");
 	// console.log("password: " + password);
@@ -77,7 +68,6 @@ document.getElementById("search-form").addEventListener("submit", function (even
 						headers: { "Content-Type": 'application/json' },
 						method: "POST",
 						body: JSON.stringify({ question: text + searchTerm, search: searchTerm, password: userkey }),
-						signal: signal,
 					})
 						.then((response) => response.text())
 						.then(async (data) => {
