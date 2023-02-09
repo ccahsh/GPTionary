@@ -79,9 +79,14 @@ document.getElementById("search-form").addEventListener("submit", function (even
 							data = data.replace(/\\"/g, '"');
 							// console.log(data);
 							// data = data.replace(/\n/g, '<br>');
-// 							// firebase error yields 'A', so make a string instead.
+ 							// firebase error yields 'A', so make a string instead.
 							if (data.trim() == 'A') {
 								data = "Sorry, there was an error processing your request. Could you please ask your question again?";
+							}
+							// remove 'A:' in beginning
+							if (data.startsWith('A:'){
+							    	data = data.slice(2);
+								data = data.trim();
 							}
 							// update the innerHTML of the list item to include the answer
 							listItemA.innerHTML = listItemA.innerHTML.replace('<span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span>', data);
