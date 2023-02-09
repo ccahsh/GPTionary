@@ -78,6 +78,10 @@ document.getElementById("search-form").addEventListener("submit", function (even
 							data = data.replace(/\\"/g, '"');
 							// console.log(data);
 							// data = data.replace(/\n/g, '<br>');
+// 							// firebase error yields 'A', so make a string instead.
+							if (data.trim() == 'A') {
+								data = "Sorry, there was an error processing your request. Could you please ask your question again?";
+							}
 							// update the innerHTML of the list item to include the answer
 							listItemA.innerHTML = listItemA.innerHTML.replace('<span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span>', data);
 							text = text + "Q: " + searchTerm + " A: " + JSON.stringify(data) + " ";
