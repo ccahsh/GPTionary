@@ -79,8 +79,10 @@ document.getElementById("search-form").addEventListener("submit", function (even
 							data = data.replace(/\\"/g, '"');
 							// console.log(data);
 							// data = data.replace(/\n/g, '<br>');
- 							// firebase error yields 'A', so make a string instead.
-							if (data.trim() == 'A') {
+ 							// list of possible errors
+							let error_list = ['', 'A'];
+							let test_data = data.trim()
+							if (error_list.includes(test_data)) {
 								data = "Sorry, there was an error processing your request. Could you please ask your question again?";
 							}
 							// remove 'A:' in beginning
