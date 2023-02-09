@@ -84,6 +84,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 						let error_sentence = ['The question you asked is considered to be profane; please rewrite or rephrase.',
 								     'Please rephrase the question correctly and try again.',
 								     'Your question is taking too long to answer. Please rephrase and/or try again.',
+								     'This question is not appropriate for dictionary use.',
 								     'An error has occured while processing your question. Try a different question or reload the page.'];
 						let test_data = data.trim()
 						if (error_char.includes(test_data)) {
