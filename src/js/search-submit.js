@@ -84,7 +84,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 								data = "Sorry, there was an error processing your request. Could you please ask your question again?";
 							}
 							// remove 'A:' in beginning
-							if (data.startsWith('A:'){
+							if (data.startsWith('A:')){
 							    	data = data.slice(2);
 								data = data.trim();
 							}
