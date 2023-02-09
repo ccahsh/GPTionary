@@ -35,8 +35,8 @@ document.getElementById("search-form").addEventListener("submit", function (even
 		.then((data) => {
 			// console.log("data:" + data);
 			check = data.replace(/^"(.*)"$/, '$1');
-			console.log(correct);
-			console.log(check);
+// 			console.log(correct);
+// 			console.log(check);
 			if (check == 'false') { // if cookie got expired (to prevent indefinite usage)
 				$('#keyquery').modal('show');
 			} else {
