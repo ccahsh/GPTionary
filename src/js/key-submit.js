@@ -12,7 +12,7 @@ input.addEventListener("keypress", function (event) {
 	}
 });
 
-let correct = false;
+// let correct = false;
 $("#submitbutton").mousedown(function () {
 	$(this).addClass("pressed");
 });
@@ -56,7 +56,7 @@ function checkkey() {
 				document.getElementById("passcode1").innerHTML = userkey;
 
 				// 'correct' variable is changed to allow Q&A
-				correct = true;
+				// correct = true;
 
 				const delay = ms => new Promise(res => setTimeout(res, ms));
 				const timedelay = async () => {
@@ -77,7 +77,7 @@ function checkkey() {
 				};
 				timedelay();
 			} else {
-				correct = false;
+				// correct = false;
 				document.getElementById("userkey").classList.remove("preuserkey");
 				document.getElementById("userkey").style.borderColor = "red";
 				document.getElementById("userkey").classList.remove("userkey");
