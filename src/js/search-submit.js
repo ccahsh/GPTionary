@@ -57,10 +57,11 @@ document.getElementById("search-form").addEventListener("submit", function (even
 					input.value = ""; // Clear search input
 					const submitButton = document.getElementById("button-addon2");
 					submitButton.setAttribute("disabled", "true");
-					var listItemA = document.createElement("li");
-					listItemA.classList.add("list-group-item");
-					document.getElementById("search-history").append(listItemA);
-					listItemA.innerHTML += "<b>A: </b><span class='loader__dot'>.</span><span class='loader__dot'>.</span><span class='loader__dot'>.</span>";
+// 					var listItemA = document.createElement("li");
+// 					listItemA.classList.add("list-group-item");
+// 					document.getElementById("search-history").append(listItemA);
+					listItem.innerHTML += "<b>A: </b><span class='loader__dot'>.</span><span class='loader__dot'>.</span><span class='loader__dot'>.</span>";
+// 					listItemA.innerHTML += "<b>A: </b><span class='loader__dot'>.</span><span class='loader__dot'>.</span><span class='loader__dot'>.</span>";
 
 					fetch("https://gptionary-answer.vercel.app/", {
 						headers: { "Content-Type": 'application/json' },
@@ -78,7 +79,8 @@ document.getElementById("search-form").addEventListener("submit", function (even
 							// console.log(data);
 							// data = data.replace(/\n/g, '<br>');
 							// update the innerHTML of the list item to include the answer
-							listItemA.innerHTML = listItemA.innerHTML.replace('<span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span>', data);
+							listItem.innerHTML = listItem.innerHTML.replace('<span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span>', data);
+// 							listItemA.innerHTML = listItemA.innerHTML.replace('<span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span>', data);
 							text = text + "Q: " + searchTerm + " A: " + JSON.stringify(data) + " ";
 							await qnaInput(userkey, searchTerm, data, firebaseConfig);
 							submitButton.removeAttribute("disabled");
