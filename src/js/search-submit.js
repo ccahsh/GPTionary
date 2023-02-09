@@ -69,36 +69,41 @@ document.getElementById("search-form").addEventListener("submit", function (even
 						method: "POST",
 						body: JSON.stringify({ question: text + searchTerm, search: searchTerm, password: userkey }),
 					})
-						.then((response) => response.text())
-						.then(async (data) => {
-							// console.log(data);
-							const firebaseConfig = JSON.parse(data)[1];
-							data = JSON.parse(data)[0];
-							data = data.replace(/^"(.*)"$/, '$1');
-							data = data.replace(/\n/g, '<br>');
-							data = data.replace(/\\"/g, '"');
-							// console.log(data);
-							// data = data.replace(/\n/g, '<br>');
- 							// list of possible errors
-							let error_list = ['', 'A', 'A:'];
-							let test_data = data.trim()
-							if (error_list.includes(test_data)) {
-								data = "Sorry, there was an error processing your request. Could you please ask your question again?";
-							} else {
-								// remove 'A:' in beginning
-								if (data.startsWith('A:')) {
-								    	data = data.slice(2);
-									data = data.trim();
-								}
-								text = text + "Q: " + searchTerm + " A: " + JSON.stringify(data) + " ";
+					.then((response) => response.text())
+					.then(async (data) => {
+						// console.log(data);
+						const firebaseConfig = JSON.parse(data)[1];
+						data = JSON.parse(data)[0];
+						data = data.replace(/^"(.*)"$/, '$1');
+						data = data.replace(/\n/g, '<br>');
+						data = data.replace(/\\"/g, '"');
+						// console.log(data);
+						// data = data.replace(/\n/g, '<br>');
+						// list of possible errors
+						let error_list = ['', 'A', 'A:'];
+						let test_data = data.trim()
+						if (error_list.includes(test_data)) {
+							data = "Sorry, there was an error processing your request. Could you please ask your question again?";
+						} else {
+							// remove 'A:' in beginning
+							if (data.startsWith('A:')) {
+								data = data.slice(2);
+								data = data.trim();
 							}
-							// update the innerHTML of the list item to include the answer
-							listItemA.innerHTML = listItemA.innerHTML.replace('<span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span>', data);
-							// save in firebase regardless of the answer
-							await qnaInput(userkey, searchTerm, data, firebaseConfig);
-							submitButton.removeAttribute("disabled");
-						})
-						.catch(error => console.error(error));
+							text = text + "Q: " + searchTerm + " A: " + JSON.stringify(data) + " ";
+						}
+						// update the innerHTML of the list item to include the answer
+						listItemA.innerHTML = listItemA.innerHTML.replace('<span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span>', data);
+						// save in firebase regardless of the answer
+						await qnaInput(userkey, searchTerm, data, firebaseConfig);
+						submitButton.removeAttribute("disabled");
+					})
+					.catch(error => {
+						console.error(error);
+						data = "Sorry, there was an error processing your request. Could you please ask your question again?";
+						listItemA.innerHTML = listItemA.innerHTML.replace('<span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span>', data);
+						submitButton.removeAttribute("disabled");
+					});
 				};
 			}
 
