@@ -108,7 +108,8 @@ document.getElementById("search-form").addEventListener("submit", function (even
 						console.error(error);
 						data = "Sorry, there was an error processing your request. Could you please ask your question again?";
 						listItemA.innerHTML = listItemA.innerHTML.replace('<span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span>', data);
-						await qnaInput(userkey, searchTerm, data, firebaseConfig);
+						// cannot save in firebase since config data is not given
+						// await qnaInput(userkey, searchTerm, data, firebaseConfig);
 						submitButton.removeAttribute("disabled");
 					});
 				};
