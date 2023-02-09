@@ -124,12 +124,12 @@ body {
 .list-group-item:first-child {
   position: relative;
   top: 50%;
-  transform: translateX(12.5%);
+  transform: translateX(15%);
   border-radius: 5px;
   width: 75%;
   box-shadow: 0 0 5px rgb(129, 129, 129);
   border-width: 0px;
-  margin: auto;
+  margin: 10px;
 }
 
 .list-group-item:last-child {
