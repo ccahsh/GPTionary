@@ -23,14 +23,6 @@ $("#submitbutton").mouseout(function () {
 	$(this).removeClass("pressed");
 });
 
-// cookie to keep user logged in
-function setCookie(cname, cvalue, exminutes) {
-	var d = new Date();
-	d.setTime(d.getTime() + (exminutes * 60 * 1000));
-	var expires = "expires=" + d.toUTCString();
-	document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-};
-
 function checkkey() {
 	// remove class so that textbox can shake
 	$('#userkey').removeClass('animated shake');
@@ -49,6 +41,14 @@ function checkkey() {
 			if (checkkeyresult == 'true') {
 				const verifysubmitButton = document.getElementById("submitbutton");
 				verifysubmitButton.setAttribute("disabled", "true");
+				
+				// cookie to keep user logged in
+				function setCookie(cname, cvalue, exminutes) {
+					var d = new Date();
+					d.setTime(d.getTime() + (exminutes * 60 * 1000));
+					var expires = "expires=" + d.toUTCString();
+					document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+				};
 
 				// an hour of access
 				setCookie("password", userkey, 1);
