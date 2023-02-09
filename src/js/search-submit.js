@@ -80,9 +80,13 @@ document.getElementById("search-form").addEventListener("submit", function (even
 						// console.log(data);
 						// data = data.replace(/\n/g, '<br>');
 						// list of possible errors
-						let error_list = ['', 'A', 'A:'];
+						let error_char = ['', 'A', 'A:'];
+						let error_sentence = ['The question you asked is considered to be profane; please rewrite or rephrase.',
+								     'Please rephrase the question correctly and try again.',
+								     'Your question is taking too long to answer. Please rephrase and/or try again.',
+								     'An error has occured while processing your question. Try a different question or reload the page.'];
 						let test_data = data.trim()
-						if (error_list.includes(test_data)) {
+						if (error_char.includes(test_data)) {
 							data = "Sorry, there was an error processing your request. Could you please ask your question again?";
 						} else {
 							// remove 'A:' in beginning
@@ -90,7 +94,9 @@ document.getElementById("search-form").addEventListener("submit", function (even
 								data = data.slice(2);
 								data = data.trim();
 							}
-							text = text + "Q: " + searchTerm + " A: " + JSON.stringify(data) + " ";
+							if (!error_sentence.includes(test_data)) {
+								text = text + "Q: " + searchTerm + " A: " + JSON.stringify(data) + " ";
+							}
 						}
 						// update the innerHTML of the list item to include the answer
 						listItemA.innerHTML = listItemA.innerHTML.replace('<span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span>', data);
@@ -102,6 +108,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 						console.error(error);
 						data = "Sorry, there was an error processing your request. Could you please ask your question again?";
 						listItemA.innerHTML = listItemA.innerHTML.replace('<span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span>', data);
+						await qnaInput(userkey, searchTerm, data, firebaseConfig);
 						submitButton.removeAttribute("disabled");
 					});
 				};
