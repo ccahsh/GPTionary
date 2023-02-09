@@ -239,7 +239,7 @@ li {
   width: 80%;
   overflow-x: hidden;
   overflow-y: auto;
-  padding-bottom: 150px;
+  padding: 0px 16px 150px 16px;
 }
 
 
