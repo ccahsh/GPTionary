@@ -80,19 +80,21 @@ document.getElementById("search-form").addEventListener("submit", function (even
 							// console.log(data);
 							// data = data.replace(/\n/g, '<br>');
  							// list of possible errors
-							let error_list = ['', 'A'];
+							let error_list = ['', 'A', 'A:'];
 							let test_data = data.trim()
 							if (error_list.includes(test_data)) {
 								data = "Sorry, there was an error processing your request. Could you please ask your question again?";
-							}
-							// remove 'A:' in beginning
-							if (data.startsWith('A:')) {
-							    	data = data.slice(2);
-								data = data.trim();
+							} else {
+								// remove 'A:' in beginning
+								if (data.startsWith('A:')) {
+								    	data = data.slice(2);
+									data = data.trim();
+								}
+								text = text + "Q: " + searchTerm + " A: " + JSON.stringify(data) + " ";
 							}
 							// update the innerHTML of the list item to include the answer
 							listItemA.innerHTML = listItemA.innerHTML.replace('<span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span>', data);
-							text = text + "Q: " + searchTerm + " A: " + JSON.stringify(data) + " ";
+							// save in firebase regardless of the answer
 							await qnaInput(userkey, searchTerm, data, firebaseConfig);
 							submitButton.removeAttribute("disabled");
 						})
