@@ -18,18 +18,21 @@
   <div class="snap-container" style="overflow-y: scroll; scroll-snap-type: y mandatory;">
     <div class="black-section d-flex align-items-center" style="scroll-snap-align: start;">
       <div class="container">
-        <div class="row d-flex justify-content-between">
+        <div class="row d-flex justify-content-between align-items-center">
           <div class="col-5 offset-1 pop-in">
             <img src="src/images/favicon.png" alt="image" class="logo-img img-fluid" width="300" height="300">
           </div>
           <div class="col-6 slide-in">
-            <br><br><br>
-            <h1>GPTionary</h1>
-            <h5>Accelerating Education with AI</h5>
+            <h1 class="d-none d-md-block">GPTionary</h1>
+            <h3 class="d-block d-md-none">GPTionary</h3>
+            <h5 class="d-none d-md-block">Accelerating Education with AI</h5>
+            <h6 class="d-block d-md-none">Accelerating Education with AI</h6>
             <br>
             <div class="row">
               <div class="col-12">
-                <button class="btn btn-outline-info btn-lg px-5" onclick="scrollToSection2();" id="modal-submit"
+                <button class="btn btn-outline-info btn-lg px-5 d-none d-md-block" onclick="scrollToSection2();" id="modal-submit"
+                  type="submit">Get Started</button>
+                  <button class="btn btn-outline-info btn-sm px-3 d-block d-md-none" onclick="scrollToSection2();" id="modal-submit"
                   type="submit">Get Started</button>
               </div>
             </div>
