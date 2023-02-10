@@ -49,7 +49,6 @@ document.getElementById("search-form").addEventListener("submit", function (even
 				// } 
 				if (searchTerm) { // If search term is not empty
 					// get userkey for admin supervision
-					document.cookie = "test=1;";
 					var userkey = document.getElementById("passcode").innerHTML;
 					// Create a single list item for both question and answer
 					var listItem = document.createElement("li");
