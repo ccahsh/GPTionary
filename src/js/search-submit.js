@@ -97,10 +97,10 @@ document.getElementById("search-form").addEventListener("submit", function (even
 							}
 							// remove quotations
 							data = data.trim();
-							if (data.startsWith('"') {
+							if (data.startsWith('"')) {
 							    data = data.slice(1);
 							}
-							if (data.endsWith('"') {
+							if (data.endsWith('"')) {
 							    data = data.slice(0,-1);
 							}
 							if (!error_sentence.includes(test_data)) {
