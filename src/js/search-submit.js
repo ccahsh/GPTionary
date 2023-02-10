@@ -95,6 +95,14 @@ document.getElementById("search-form").addEventListener("submit", function (even
 								data = data.slice(2);
 								data = data.trim();
 							}
+							// remove quotations
+							data = data.trim();
+							if (data.startsWith('"') {
+							    data = data.slice(1);
+							}
+							if (data.endsWith('"') {
+							    data = data.slice(0,-1);
+							}
 							if (!error_sentence.includes(test_data)) {
 								text = text + "Q: " + searchTerm + " A: " + JSON.stringify(data) + " ";
 							}
