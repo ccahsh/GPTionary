@@ -71,7 +71,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 					.then((response) => response.text())
 					.then(async (data) => {
 						// console.log(data);
-						const firebaseConfig = JSON.parse(data)[1];
+// 						const firebaseConfig = JSON.parse(data)[1];
 						data = JSON.parse(data)[0];
 						data = data.replace(/^"(.*)"$/, '$1');
 						data = data.replace(/\n/g, '<br>');
@@ -109,7 +109,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 						// update the innerHTML of the list item to include the answer
 						listItemA.innerHTML = listItemA.innerHTML.replace('<span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span>', data);
 						// save in firebase regardless of the answer
-						await qnaInput(userkey, searchTerm, data, firebaseConfig);
+// 						await qnaInput(userkey, searchTerm, data, firebaseConfig);
 						submitButton.removeAttribute("disabled");
 					})
 					.catch(error => {
