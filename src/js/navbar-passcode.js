@@ -18,8 +18,8 @@ $(document).ready(function () {
 
 	var password = getCookie("password");
 	
-	document.getElementById("passcode").innerHTML = "";
-	document.getElementById("passcode1").innerHTML = "";
+	document.getElementById("passcode").innerHTML = " ";
+	document.getElementById("passcode1").innerHTML = " ";
 // 	COMMENT THE LINES ABOVE AND UNCOMMENT THE LINES BELOW ONCE BETA (FREE) RELEASE IS OVER
 // 	document.getElementById("passcode").innerHTML = password;
 // 	document.getElementById("passcode1").innerHTML = password;
