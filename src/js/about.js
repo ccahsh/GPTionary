@@ -29,5 +29,6 @@ $(document).ready(function () {
 });
 
 function scrollToSection2() {
+	window.open("https://linktr.ee/gptionary", '_blank');
 	document.getElementById("second-section").scrollIntoView({ behavior: 'smooth' });
 }
