@@ -238,7 +238,7 @@ li {
 }
 
 .scrollable-container {
-  max-height: calc(100vh - 80px);
+  max-height: 80%;
   overflow-y: scroll;
 }
 
