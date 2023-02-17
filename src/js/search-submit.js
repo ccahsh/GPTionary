@@ -83,10 +83,10 @@ document.getElementById("search-form").addEventListener("submit", function (even
 						// data = data.replace(/\n/g, '<br>');
 						// list of possible errors
 						let error_char = ['', 'A', 'A:'];
-						let error_sentence = ['The question you asked is considered to be profane; please rewrite or rephrase.',
-								     'Please rephrase the question correctly and try again.',
+						let error_sentence = ['This question is inappropriate for GPTionary. GPTionary is a dictionary service that helps users find words or phrases based on the description given.',
+								     'This question is considered to be harmful and is inappropriate for GPTionary.',
 								     'Your question is taking too long to answer. Please rephrase and/or try again.',
-								     'This question is not appropriate for dictionary use.',
+								     'This is not a question, so GPTionary cannot provide an answer.',
 								     'An error has occured while processing your question. Try a different question or reload the page.'];
 						let test_data = data.trim()
 						if (error_char.includes(test_data)) {
