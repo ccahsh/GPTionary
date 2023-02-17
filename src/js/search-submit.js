@@ -73,7 +73,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 					})
 					.then((response) => response.text())
 					.then(async (data) => {
-						// console.log(data);
+						console.log(data);
 // 						UNCOMMENT THE LINE BELOW ONCE BETA (FREE) RELEASE IS OVER
 // 						const firebaseConfig = JSON.parse(data)[1];
 						data = JSON.parse(data)[0];
