@@ -6,4 +6,4 @@ For other inquiries, please contact charlesshin@gptionary.org.
 Founded and developed by Charles Shin (tlsgusdn1107).  
 Special thanks to Jonathan Liu (32111jl) and Jonathan He (D3Rkness) for their contribution.
   
-Copyright © 2023 GPTionary. All rights reserved.
+Copyright © 2022-2023 GPTionary. All rights reserved.
