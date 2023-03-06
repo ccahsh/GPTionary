@@ -40,6 +40,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 			if (check == 'false') { // if cookie got expired (to prevent indefinite usage)
 				$('#keyquery').modal('show');
 			} else {
+				document.getElementById("introduction").classList.add("d-none");
 				var input = document.getElementById("search-input"); // Get search input
 				var searchTerm = input.value; // Get search term
 				searchTerm = searchTerm.trim()
