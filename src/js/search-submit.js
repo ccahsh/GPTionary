@@ -115,7 +115,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 					})
 					.catch(error => {
 						console.error(error);
-						data = "Sorry, there was an error processing your request. Please rephrase your question or refresh the page.";
+						data = "Sorry, there was a server error processing your request. Please rephrase your question or refresh the page.";
 						listItemA.innerHTML = listItemA.innerHTML.replace('<span class="loader__dot">.</span><span class="loader__dot">.</span><span class="loader__dot">.</span>', data);
 						// cannot save in firebase since config data is not given
 						// await qnaInput(userkey, searchTerm, data, firebaseConfig);
