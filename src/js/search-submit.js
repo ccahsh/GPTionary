@@ -77,7 +77,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 // 						UNCOMMENT THE LINE BELOW ONCE BETA (FREE) RELEASE IS OVER
 // 						const firebaseConfig = JSON.parse(data)[1];
 						data = JSON.parse(data)[0];
-						data = data.replace(/^"(.*)"$/, '$1');
+						data = data.replace(/^"(.+)"$/, '$1');
 						data = data.replace(/\\"/g, '"');
 // 						console.log(data);
 						// data = data.replace(/\n/g, '<br>');
