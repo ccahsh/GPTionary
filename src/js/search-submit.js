@@ -102,7 +102,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 							if (data.endsWith('"')) {
 							    data = data.slice(0,-1);
 							}
-							if (!error_sentence.includes(test_data)) {
+							if (!error_sentence.includes(data)) {
 								text = text + "Q: " + searchTerm + " A: " + JSON.stringify(data) + " ";
 							}
 						}
