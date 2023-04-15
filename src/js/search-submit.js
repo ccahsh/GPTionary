@@ -99,9 +99,9 @@ document.getElementById("search-form").addEventListener("submit", function (even
 							}
 							// remove quotations (except phrases that are in quotes)
 							data = data.trim();
-// 							if (data.startsWith('"') && data.endsWith('"')) {
-// 							    data = data.slice(1,-1);
-// 							}
+							if (data.endsWith('"')) {
+							    data = data.slice(0,-1);
+							}
 							if (!error_sentence.includes(test_data)) {
 								text = text + "Q: " + searchTerm + " A: " + JSON.stringify(data) + " ";
 							}
