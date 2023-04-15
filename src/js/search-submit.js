@@ -88,7 +88,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 								     'Your question is taking too long to answer. Please rephrase and/or try again.',
 								     'This is not a question, so GPTionary cannot provide an answer.',
 								     'An error has occured while processing your question. Try a different question or reload the page.'];
-						let data = data.trim()
+						data = data.trim()
 						if (error_char.includes(data)) {
 							data = "Sorry, there was an error processing your request. Please rephrase your question or refresh the page.";
 						} else {
