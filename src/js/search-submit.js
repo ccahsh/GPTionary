@@ -68,7 +68,7 @@ document.getElementById("search-form").addEventListener("submit", function (even
 					fetch("https://gptionary-answer.vercel.app/", {
 						headers: { "Content-Type": 'application/json' },
 						method: "POST",
-						body: JSON.stringify({ question: text + searchTerm, search: searchTerm }),
+						body: JSON.stringify({ question: text + searchTerm, search: searchTerm, past: text }),
 						// COMMENT THE LINE ABOVE AND UNCOMMENT THE LINE BELOW ONCE BETA (FREE) RELEASE IS OVER
 // 						body: JSON.stringify({ question: text + searchTerm, search: searchTerm, password: userkey }),
 					})
