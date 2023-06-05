@@ -50,6 +50,7 @@ body {
   .peach-section {
     height: 100vh;
   }
+  
   #bookimg {
     float: none;
     display: block;
@@ -76,6 +77,15 @@ body {
 
 .peach-section {
   background-color: #FFF8E1;
+  color: black;
+  scroll-snap-align: start;
+  min-height: 60vh;
+  height: auto;
+  padding: 30px;
+}
+
+.blue-section {
+  background-color: #d7dbf3;
   color: black;
   scroll-snap-align: start;
   min-height: 60vh;
@@ -129,11 +139,37 @@ body {
   margin: 0 auto;
 }
 
+.profile-img {
+  max-width: 150px;
+  max-height: 150px;
+  margin: 0 auto;
+}
+
+.small-profile-img {
+  max-width: 100px;
+  max-height: 100px;
+  margin: 0 auto;
+}
+
 .img-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.card:hover {
+  box-shadow: 0 0 10px rgba(4, 4, 4, 0.5);
 }
 
 @keyframes slide-in {
