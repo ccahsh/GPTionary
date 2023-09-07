@@ -4,6 +4,15 @@ var text = "";
 
 document.getElementById("search-form").addEventListener("submit", function (event) {
 	event.preventDefault(); // Prevent form from submitting
+
+	// check if input is empty
+	var input = document.getElementById("search-input"); // Get search input
+	var searchTerm = input.value; // Get search term
+	searchTerm = searchTerm.trim();
+
+	if (searchTerm.length == 0) {
+		return;
+	}
 	
 	function getCookie(cname) {
 		var name = cname + "=";
