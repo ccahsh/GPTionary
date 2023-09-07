@@ -10,8 +10,8 @@ document.getElementById("search-form").addEventListener("submit", function (even
 	var searchTerm = input.value; // Get search term
 	searchTerm = searchTerm.trim();
 
-	if (searchTerm.length == 0) {
-		return;
+	if (searchTerm.length == 0) { // if input is empty string 
+		return; 
 	}
 	
 	function getCookie(cname) {
